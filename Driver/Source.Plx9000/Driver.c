@@ -52,7 +52,6 @@
 #include <linux/module.h>
 #include <linux/sched.h>
 #include <linux/version.h>
-#include <linux/vermagic.h>
 #include "ApiFunc.h"
 #include "Dispatch.h"
 #include "Driver.h"
@@ -163,7 +162,6 @@ Plx_init_module(
         __stringify(PLX_CHIP), PLX_SDK_VERSION_MAJOR, PLX_SDK_VERSION_MINOR,
         (U32)(sizeof(PLX_UINT_PTR) * 8)
         ));
-    InfoPrintf(("Supports Linux kernel v%s\n", UTS_RELEASE));
 
     // Allocate memory for the Driver Object
     pGbl_DriverObject =

@@ -53,7 +53,6 @@
 #include <linux/init.h>
 #include <linux/slab.h>      // For kmalloc()
 #include <linux/version.h>
-#include <linux/vermagic.h>
 #include "Dispatch.h"
 #include "Driver.h"
 #include "PciFunc.h"
@@ -93,7 +92,6 @@ Plx_init_module(
         PLX_SDK_VERSION_MAJOR, PLX_SDK_VERSION_MINOR,
         (U32)(sizeof(PLX_UINT_PTR) * 8)
         ));
-    InfoPrintf(("Supports Linux kernel v%s\n", UTS_RELEASE));
 
     // Allocate memory for the Driver Object
     pGbl_DriverObject =
