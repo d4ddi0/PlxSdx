@@ -10,6 +10,7 @@ clear
 
 # Remove comment to display script commands as it runs
 #set -x
+cd $(dirname $0)
 
 # Set flag to avoid screen clear in driver makefile
 export PLX_NO_CLEAR_SCREEN=1
