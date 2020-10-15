@@ -1,0 +1,7 @@
+*.cmd
+*.o.d
+*.o
+*.a
+*.mod
+*.mod.c
+Output/
