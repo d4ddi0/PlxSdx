@@ -60,6 +60,10 @@
 #include "PlxChipApi.h"
 #include "SuppFunc.h"
 
+#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 8, 0)
+#define mmap_read_lock(mm) down_read(&(mm)->mmap_sem)
+#define mmap_read_unlock(mm) up_read(&(mm)->mmap_sem)
+#endif
 
 
 
@@ -953,7 +957,7 @@ PlxLockBufferAndBuildSgl(
     }
 
     // Obtain the mmap reader/writer semaphore
-    down_read( &current->mm->mmap_sem );
+    mmap_read_lock( current->mm );
 
     // Attempt to lock the user buffer into memory
     rc =
@@ -966,7 +970,7 @@ PlxLockBufferAndBuildSgl(
             );
 
     // Release mmap semaphore
-    up_read( &current->mm->mmap_sem );
+    mmap_read_unlock( current->mm );
 
     if (rc != TotalDescr)
     {
